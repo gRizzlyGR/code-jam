@@ -15,39 +15,32 @@ func main() {
 	scanner.Scan()
 
 	var cases int
-	
+
 	for scanner.Scan() {
 		parts := strings.Split(scanner.Text(), " ")
-		
+
 		x, _ := strconv.Atoi(parts[0])
 		y, _ := strconv.Atoi(parts[1])
 		mural := parts[2]
-		
+
 		var cost int
 		var prev rune
-		
+
 		for _, letter := range mural {
 			switch letter {
 			case 'C':
-				{
-
-					if prev == 'J' {
-						cost += y
-					}
-					prev = letter
+				if prev == 'J' {
+					cost += y
 				}
+				prev = letter
 			case 'J':
-				{
+				if prev == 'C' {
+					cost += x
+				}
+				prev = letter
 
-					if prev == 'C' {
-						cost += x
-					}
-					prev = letter
-				}
 			default:
-				{
-					// Ignore '?'
-				}
+				// Ignore '?'
 			}
 		}
 		cases++
