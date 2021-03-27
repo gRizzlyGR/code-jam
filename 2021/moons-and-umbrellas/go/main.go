@@ -35,7 +35,7 @@ func main() {
 				prev = letter
 			case 'J':
 				if prev == 'C' {
-				u	cost += x
+					cost += x
 				}
 				prev = letter
 			default:
